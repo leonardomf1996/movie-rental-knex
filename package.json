@@ -6,13 +6,18 @@
    "scripts": {
       "dev": "tsx watch src/server.ts",
       "lint": "eslint src --ext .ts --fix",
-      "test": "vitest"
+      "test": "vitest",
+      "knex": "node --no-warnings --loader tsx ./node_modules/knex/bin/cli.js"
    },
    "dependencies": {
-      "fastify": "^4.14.1"
+      "dotenv": "^16.0.3",
+      "fastify": "^4.14.1",
+      "knex": "^2.4.2",
+      "zod": "^3.21.4"
    },
    "devDependencies": {
       "@types/node": "^18.15.0",
+      "@types/supertest": "^2.0.12",
       "@typescript-eslint/eslint-plugin": "^5.54.1",
       "@typescript-eslint/parser": "^5.54.1",
       "eslint": "^8.36.0",
@@ -20,6 +25,8 @@
       "eslint-config-prettier": "^8.7.0",
       "eslint-plugin-prettier": "^4.2.1",
       "prettier": "^2.8.4",
+      "sqlite3": "^5.1.4",
+      "supertest": "^6.3.3",
       "tsx": "^3.12.3",
       "typescript": "^4.9.5",
       "vitest": "^0.29.2"
