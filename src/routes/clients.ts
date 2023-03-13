@@ -21,4 +21,8 @@ export async function clientsRoutes(app: FastifyInstance) {
       await ClientService.disableClient(request, reply)
       return reply.status(204).send();
    })
+   app.put('/:id', async (request, reply) => {
+      await ClientService.updateClient(request, reply)
+      return reply.status(204).send();
+   })
 }

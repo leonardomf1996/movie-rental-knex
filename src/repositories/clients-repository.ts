@@ -3,6 +3,7 @@ import { CreateClientDto } from "../dtos/create-client-dto";
 import IClientsRepository from "./interfaces/Iclients-repository";
 import { knex } from '../database';
 import { ClientModel } from "../models/client";
+import { UpdateClientDto } from "../dtos/update-client-dto";
 
 export class ClientsRepository implements IClientsRepository {
    private static instance: ClientsRepository
@@ -40,6 +41,12 @@ export class ClientsRepository implements IClientsRepository {
 
    async disableClient(id: string): Promise<void> {
       await knex('clients').where('id', id).update({ status: 0 })
+   }
+
+   async updateClient(id: string, data: UpdateClientDto): Promise<void> {
+      await knex('clients').where('id', id).update({ 
+         ...data
+       })
    }
 
 }

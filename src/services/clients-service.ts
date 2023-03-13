@@ -83,9 +83,39 @@ async function disableClient(request: FastifyRequest, reply: FastifyReply) {
    }
 }
 
+async function updateClient(request: FastifyRequest, reply: FastifyReply) {
+   try {
+      const updateClientParamSchema = z.object({
+         id: z.string()
+      });
+
+      const updateClientBodySchema = z.object({
+         fullname: z.string(),
+         birthday: z.string(),
+         address: z.string(),
+         houseNumber: z.string(),
+         complement: z.string(),
+         city: z.string(),
+         state: z.string(),
+         country: z.string(),
+         phone: z.string(),
+         mail: z.string()
+      });
+
+      const { id } = updateClientParamSchema.parse(request.params);
+      const body = updateClientBodySchema.parse(request.body);
+      
+      await clientRepository.updateClient(id, body);
+      
+   } catch (_) {
+      throw new Error('400: error to diasble data')
+   }
+}
+
 export default {
    createClient,
    listClients,
    getClient,
-   disableClient
+   disableClient,
+   updateClient
 }
