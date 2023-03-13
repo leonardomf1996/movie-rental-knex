@@ -54,12 +54,12 @@ async function listClients(request: FastifyRequest, reply: FastifyReply) {
 
 async function getClient(request: FastifyRequest, reply: FastifyReply) {
    try {
-      const listClientsParamSchema = z.object({
+      const listClientParamSchema = z.object({
          id: z.string()
       });
 
-      const { id } = listClientsParamSchema.parse(request.params);
-      
+      const { id } = listClientParamSchema.parse(request.params);
+
       const client = await clientRepository.getClient(id);
 
       return client
@@ -68,8 +68,24 @@ async function getClient(request: FastifyRequest, reply: FastifyReply) {
    }
 }
 
+async function disableClient(request: FastifyRequest, reply: FastifyReply) {
+   try {
+      const disableClientParamSchema = z.object({
+         id: z.string()
+      });
+
+      const { id } = disableClientParamSchema.parse(request.params);
+      
+      await clientRepository.disableClient(id);
+      
+   } catch (_) {
+      throw new Error('400: error to diasble data')
+   }
+}
+
 export default {
    createClient,
    listClients,
-   getClient
+   getClient,
+   disableClient
 }
