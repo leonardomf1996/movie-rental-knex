@@ -16,10 +16,10 @@ Locação
 
 #### RF
 
-[ ] O usuário pode criar um novo cliente 
+[x] O usuário pode criar um novo cliente 
 [ ] O usuário pode alterar um cliente já existente
 [ ] O usuário pode desabilitar um cliente
-[ ] O usuário pode listar todos os clientes salvos, filtrando por ativado e desativado
+[x] O usuário pode listar todos os clientes salvos, filtrando por ativado e desativado
 [ ] O usuário pode listar um cliente específico
 
 #### RN

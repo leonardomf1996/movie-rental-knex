@@ -52,7 +52,24 @@ async function listClients(request: FastifyRequest, reply: FastifyReply) {
    }
 }
 
+async function getClient(request: FastifyRequest, reply: FastifyReply) {
+   try {
+      const listClientsParamSchema = z.object({
+         id: z.string()
+      });
+
+      const { id } = listClientsParamSchema.parse(request.params);
+      
+      const client = await clientRepository.getClient(id);
+
+      return client
+   } catch (_) {
+      throw new Error('400: error to list data')
+   }
+}
+
 export default {
    createClient,
-   listClients
+   listClients,
+   getClient
 }

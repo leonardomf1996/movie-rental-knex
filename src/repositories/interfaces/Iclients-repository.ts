@@ -4,4 +4,5 @@ import { ClientModel } from "../../models/client";
 export default interface IClientsRepository {
    createClient(data: CreateClientDto): Promise<ClientModel[]>
    listClients(status: boolean): Promise<ClientModel[]>
+   getClient(id: string): Promise<ClientModel | null>
 }

@@ -1,4 +1,5 @@
 export interface ClientModel {
+   id: string,
    fullname: string,
    birthday: string,
    address: string,

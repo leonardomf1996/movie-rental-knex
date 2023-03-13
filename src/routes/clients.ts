@@ -11,4 +11,9 @@ export async function clientsRoutes(app: FastifyInstance) {
       const data = await ClientService.listClients(request, reply)
       return reply.status(200).send(data);
    })
+
+   app.get('/:id', async (request, reply) => {
+      const data = await ClientService.getClient(request, reply)
+      return reply.status(200).send(data);
+   })
 }

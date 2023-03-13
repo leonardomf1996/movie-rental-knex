@@ -5,6 +5,7 @@ import { knex } from '../database';
 import { ClientModel } from "../models/client";
 
 export class ClientsRepository implements IClientsRepository {
+   
    private static instance: ClientsRepository
 
    public static getInstance(): ClientsRepository {
@@ -26,6 +27,17 @@ export class ClientsRepository implements IClientsRepository {
    async listClients(status: boolean): Promise<ClientModel[]> {
       const clients = await knex('clients').select('*').where('status', status)
       return clients
+   }
+
+   async getClient(id: string): Promise<ClientModel | null> {
+      const findClient = await knex('clients').select('*').where('id', id).first()
+      console.log('findClient')
+      console.log(findClient)
+      if (!findClient) {
+         return null
+      }
+      
+      return findClient
    }
 
 }
