@@ -25,6 +25,6 @@ Locação
 #### RN
 
 [x] Quando salvar o cliente, o cpf deste precisa ser criptografado
-[ ] Quando listar todos os clientes, retornar informações gerais dos clientes
-[ ] Quando listar apenas um cliente, listar todas as informações dele
-[ ] Quando alterar um cliente, o seu cpf não pode ser alterado
+[x] Quando listar todos os clientes, retornar informações gerais dos clientes
+[x] Quando listar apenas um cliente, listar todas as informações dele
+[x] Quando alterar um cliente, o seu cpf não pode ser alterado
