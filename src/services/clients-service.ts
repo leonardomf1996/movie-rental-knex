@@ -1,5 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
+import bcrypt from 'bcrypt';
 
 import { ClientsRepository } from '../repositories/clients-repository';
 
@@ -23,7 +24,9 @@ async function createClient(request: FastifyRequest, reply: FastifyReply) {
 
       const body = createClientBodySchema.parse(request.body);
 
-      const client = await clientRepository.createClient(body)
+      const hashedDocument = await bcrypt.hash(body.document, 12)
+
+      const client = await clientRepository.createClient(Object.assign({}, body, { document: hashedDocument }))
 
       return { client: client[0] }
 
@@ -75,9 +78,9 @@ async function disableClient(request: FastifyRequest, reply: FastifyReply) {
       });
 
       const { id } = disableClientParamSchema.parse(request.params);
-      
+
       await clientRepository.disableClient(id);
-      
+
    } catch (_) {
       throw new Error('400: error to diasble data')
    }
@@ -104,9 +107,9 @@ async function updateClient(request: FastifyRequest, reply: FastifyReply) {
 
       const { id } = updateClientParamSchema.parse(request.params);
       const body = updateClientBodySchema.parse(request.body);
-      
+
       await clientRepository.updateClient(id, body);
-      
+
    } catch (_) {
       throw new Error('400: error to diasble data')
    }

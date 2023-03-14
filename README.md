@@ -17,14 +17,14 @@ Locação
 #### RF
 
 [x] O usuário pode criar um novo cliente 
-[ ] O usuário pode alterar um cliente já existente
+[x] O usuário pode alterar um cliente já existente
 [x] O usuário pode desabilitar um cliente
 [x] O usuário pode listar todos os clientes salvos, filtrando por ativado e desativado
 [x] O usuário pode listar um cliente específico
 
 #### RN
 
-[ ] Quando salvar o cliente, o cpf deste precisa ser criptografado
+[x] Quando salvar o cliente, o cpf deste precisa ser criptografado
 [ ] Quando alterar um cliente, o seu cpf não pode ser alterado
 [ ] Quando listar todos os clientes, retornar informações gerais dos clientes
 [ ] Quando listar apenas um cliente, listar todas as informações dele
