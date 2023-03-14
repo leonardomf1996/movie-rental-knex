@@ -1,7 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
-import bcrypt from 'bcrypt';
-
 import { ClientsRepository } from '../repositories/clients-repository';
 
 const clientRepository = ClientsRepository.getInstance()
@@ -24,9 +22,7 @@ async function createClient(request: FastifyRequest, reply: FastifyReply) {
 
       const body = createClientBodySchema.parse(request.body);
 
-      const hashedDocument = await bcrypt.hash(body.document, 12)
-
-      const client = await clientRepository.createClient(Object.assign({}, body, { document: hashedDocument }))
+      const client = await clientRepository.createClient(body)
 
       return { client: client[0] }
 
