@@ -25,7 +25,7 @@ export class ClientsRepository implements IClientsRepository {
    }
 
    async listClients(status: boolean): Promise<ClientModel[]> {
-      const clients = await knex('clients').select('*').where('status', status)
+      const clients = await knex('clients').select(['fullname', 'city', 'state', 'country', 'phone', 'mail']).where('status', status)
       return clients
    }
 
